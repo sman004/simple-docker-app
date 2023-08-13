@@ -6,7 +6,7 @@ pipeline {
        imagename = "austinobioma/april-docker"
        registryCredential = 'AprilDocker'
        dockerImage = ''
-       imagetag    = 'v:"$BUILD_NUMBER"'
+       imagetag    = '0.$BUILD_NUMBER'
            }
 
      stages {
