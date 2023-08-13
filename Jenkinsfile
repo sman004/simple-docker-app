@@ -3,18 +3,13 @@ pipeline {
   agent any
 
   environment {
-       imagename = "austinobioma/december-docker"
+       imagename = "austinobioma/april-docker"
        registryCredential = 'DockerHub'
        dockerImage = ''
+       imagetag    = 'v:"$BUILD_NUMBER"'
            }
 
      stages {
-
-          stage ('Build') {
-           steps {
-           sh 'mvn clean package'
-                }
-          }
 
           stage('Building Docker image') {
                steps{
@@ -24,12 +19,12 @@ pipeline {
                }
           }
 
-          stage('Deploy Image') {
+          stage('Push Image To DockerHub') {
                steps{
                      script {
                          docker.withRegistry( '', registryCredential ) {
                          dockerImage.push("$BUILD_NUMBER")
-                         dockerImage.push('latest')
+                         dockerImage.push("$imagetag")
                                               }
                          }
                }
@@ -38,7 +33,8 @@ pipeline {
           stage('Remove Unused docker image') {
                steps{
                     sh "docker rmi $imagename:$BUILD_NUMBER"
-                    sh "docker rmi $imagename:latest"
+                    sh "docker rmi $imagename:$imagetag"
+                    sh "docker system prune -f"
                     }
           }
     
