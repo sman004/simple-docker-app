@@ -1,0 +1,20 @@
+<!DOCTYPE html
+<html>
+    <head>
+        <meta charset="utf-8">
+        <style>
+            body {background: skyblue;
+            }
+
+        </style>
+    </head>
+<h1> Container Creation </h1> 
+<h2>Date Of Conatiner Deployment:</h2>
+<h3><input id = "date" type ="date" /><script>
+    var date = new Date();
+    var currentDate = date.toISOString().slice (0, 10);
+    var currentTime = date.getHours() + ':' + date.getMinutes();
+    document.getElementById('date').value = currentDate;</script>
+</h3>   
+<body>
+</html>
