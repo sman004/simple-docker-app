@@ -4,7 +4,7 @@ pipeline {
 
   environment {
        imagename = "austinobioma/april-docker"
-       registryCredential = 'DockerHub'
+       registryCredential = 'AprilDocker'
        dockerImage = ''
        imagetag    = 'v:"$BUILD_NUMBER"'
            }
