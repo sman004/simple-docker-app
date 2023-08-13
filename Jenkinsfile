@@ -38,9 +38,13 @@ pipeline {
           }
 
           stage('Deploy To Docker Server Using SSH') {
-               sshCommand remote: remote, command: "docker run --name april-docker -d -p 8080:80 austinobioma/april-docker:0.4"
-                }
-
+               steps{
+                    script {
+                         sshCommand remote: remote, command: "docker run --name april-docker -d -p 8080:80 austinobioma/april-docker:0.4"
+                    }
+               }
+          }
+          
           stage('Remove Unused docker image') {
                steps{
                     sh "docker rmi $imagename:$BUILD_NUMBER"
