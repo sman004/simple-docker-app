@@ -1,4 +1,11 @@
   
+def remote = [:]
+  remote.name = 'Docker Server'
+  remote.host = '3.16.217.232'
+  remote.user = 'ubuntu'
+  remote.password = 'Aprilclass2023'
+  remote.allowAnyHosts = true
+
 pipeline {
   agent any
 
@@ -29,6 +36,10 @@ pipeline {
                          }
                }
           }
+
+          stage('Deploy To Docker Server Using SSH') {
+               sshCommand remote: remote, command: "docker run --name april-docker -d -p 8080:80 austinobioma/april-docker:0.4"
+                }
 
           stage('Remove Unused docker image') {
                steps{
