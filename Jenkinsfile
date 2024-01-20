@@ -13,7 +13,7 @@ pipeline {
        imagename = "austinobioma/sept-docker-class"
        registryCredential = 'DockerHub'
        dockerImage = ''
-       imagetag    = "latest"//"0.${env.BUILD_ID}"
+       imagetag    = "0.${env.BUILD_ID}"
            }
 
      stages {
@@ -40,7 +40,7 @@ pipeline {
           stage('Deploy To Docker Server Using SSH') {
                steps{
                     script {
-                         sshCommand remote: remote, command: "docker run --name sept-docker-class -d -p 9090:80 austinobioma/sept-docker-class"
+                         sshCommand remote: remote, command: "docker run --name sept-docker-class -d -p 9090:80 austinobioma/sept-docker-class:0.5"
                     }
                }
           }
