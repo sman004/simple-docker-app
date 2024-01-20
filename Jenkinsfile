@@ -1,19 +1,19 @@
   
 def remote = [:]
   remote.name = 'Docker Server'
-  remote.host = '3.16.217.232'
-  remote.user = 'ubuntu'
-  remote.password = 'Aprilclass2023'
+  remote.host = '3.139.72.245'
+  remote.user = 'deployment-user'
+  remote.password = 'SeptemberClass12#'
   remote.allowAnyHosts = true
 
 pipeline {
   agent any
 
   environment {
-       imagename = "austinobioma/april-docker"
-       registryCredential = 'AprilDocker'
+       imagename = "austinobioma/sept-docker-class"
+       registryCredential = 'DockerHub'
        dockerImage = ''
-       imagetag    = "0.${env.BUILD_ID}"
+       imagetag    = "latest"//"0.${env.BUILD_ID}"
            }
 
      stages {
@@ -30,7 +30,7 @@ pipeline {
                steps{
                      script {
                          docker.withRegistry( '', registryCredential ) {
-                         dockerImage.push("$BUILD_NUMBER")
+                         //dockerImage.push("$BUILD_NUMBER")
                          dockerImage.push("$imagetag")
                                               }
                          }
@@ -40,7 +40,7 @@ pipeline {
           stage('Deploy To Docker Server Using SSH') {
                steps{
                     script {
-                         sshCommand remote: remote, command: "docker run --name april-docker -d -p 8080:80 austinobioma/april-docker:0.8"
+                         sshCommand remote: remote, command: "docker run --name sept-docker -d -p 8080:80 austinobioma/sept-docker-class"
                     }
                }
           }
