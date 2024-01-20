@@ -40,15 +40,15 @@ pipeline {
           stage('Deploy To Docker Server Using SSH') {
                steps{
                     script {
-                         sshCommand remote: remote, command: "docker run --name sept-docker -d -p 8080:80 austinobioma/sept-docker-class"
+                         sshCommand remote: remote, command: "docker run --name sept-docker -d -p 9090:80 austinobioma/sept-docker-class"
                     }
                }
           }
 
           stage('Remove Unused docker image') {
                steps{
-                    sh "docker rmi $imagename:$BUILD_NUMBER"
-                    sh "docker rmi $imagename:$imagetag"
+                    //sh "docker rmi $imagename:$BUILD_NUMBER"
+                    //sh "docker rmi $imagename:$imagetag"
                     sh "docker system prune -f"
                     }
           }
