@@ -40,7 +40,7 @@ pipeline {
           stage('Deploy To Docker Server Using SSH') {
                steps{
                     script {
-                         sshCommand remote: remote, command: "docker run --name sept-docker2 -d -p 8080:80 austinobioma/sept-docker-class:0.6"
+                         sshCommand remote: remote, command: "docker run --name may-docker-class -d -p 9090:80 austinobioma/may-class:5"
                     }
                }
           }
