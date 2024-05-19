@@ -1,19 +1,19 @@
   
 def remote = [:]
   remote.name = 'Docker Server'
-  remote.host = '3.139.72.245'
-  remote.user = 'deployment-user'
-  remote.password = 'SeptemberClass12#'
+  remote.host = '3.149.23.119'
+  remote.user = 'ubuntu'
+  remote.password = 'Mayclass202412#'
   remote.allowAnyHosts = true
 
 pipeline {
   agent any
 
   environment {
-       imagename = "austinobioma/sept-docker-class"
-       registryCredential = 'DockerHub'
+       imagename = "austinobioma/may-class"
+       registryCredential = 'DOCKERLOGIN'
        dockerImage = ''
-       imagetag    = "0.${env.BUILD_ID}"
+       imagetag    = "${env.BUILD_ID}"
            }
 
      stages {
