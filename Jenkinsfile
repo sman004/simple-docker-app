@@ -1,9 +1,9 @@
   
 def remote = [:]
   remote.name = 'Docker Server'
-  remote.host = '3.149.23.119'
+  remote.host = '18.191.56.118'
   remote.user = 'ubuntu'
-  remote.password = 'Mayclass202412#'
+  remote.password = 'Juneclass12#'
   remote.allowAnyHosts = true
 
 pipeline {
@@ -40,7 +40,7 @@ pipeline {
           stage('Deploy To Docker Server Using SSH') {
                steps{
                     script {
-                         sshCommand remote: remote, command: "docker run --name may-docker-class -d -p 9090:80 austinobioma/may-class:9"
+                         sshCommand remote: remote, command: "docker run --name june-docker-class -d -p 9090:80 austinobioma/june-class:1"
                     }
                }
           }
