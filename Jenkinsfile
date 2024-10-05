@@ -10,8 +10,8 @@ pipeline {
   agent any
 
   environment {
-       imagename = "austinobioma/may-class"
-       registryCredential = 'DOCKERLOGIN'
+       imagename = "austinobioma/june-class"
+       registryCredential = 'DockerHub'
        dockerImage = ''
        imagetag    = "${env.BUILD_ID}"
            }
