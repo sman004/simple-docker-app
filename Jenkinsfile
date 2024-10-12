@@ -40,7 +40,7 @@ pipeline {
           stage('Deploy To Docker Server Using SSH') {
                steps{
                     script {
-                         sshCommand remote: remote, command: "docker run --name june-docker-class -d -p 9090:80 sparklins/june-class:1"
+                         sshCommand remote: remote, command: "docker run --name june-docker-class -d -p 9090:80 sparklins/june-class"
                     }
                }
           }
