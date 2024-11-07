@@ -1,9 +1,9 @@
   
 def remote = [:]
   remote.name = 'Docker Server'
-  remote.host = '3.15.140.224'
+  remote.host = '18.217.183.120'
   remote.user = 'ubuntu'
-  remote.password = 'Juneclass12#'
+  remote.password = 'basit'
   remote.allowAnyHosts = true
 
 pipeline {
@@ -11,7 +11,7 @@ pipeline {
 
 //add the image name you built or the image repsoitory name from dockerhub
   environment {
-       imagename = "sparklins/june-class"
+       imagename = " sparklins/test"
        //add name of global credentials created on jenkins
        registryCredential = 'Dockerhub'
        dockerImage = ''
@@ -42,7 +42,7 @@ pipeline {
           stage('Deploy To Docker Server Using SSH') {
                steps{
                     script {
-                         sshCommand remote: remote, command: "docker run --name june-docker-class3 -d -p 8080:80 sparklins/june-class"
+                         sshCommand remote: remote, command: "docker run --name newcontainer -d -p 8080:80 sparklins/test:1"
                     }
                }
           }
