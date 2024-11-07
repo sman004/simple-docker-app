@@ -11,7 +11,7 @@ pipeline {
 
 //add the image name you built or the image repsoitory name from dockerhub
   environment {
-       imagename = " sparklins/test"
+       imagename = "sparklins/test"
        //add name of global credentials created on jenkins
        registryCredential = 'Dockerhub'
        dockerImage = ''
