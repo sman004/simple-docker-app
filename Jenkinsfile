@@ -42,7 +42,7 @@ pipeline {
           stage('Deploy To Docker Server Using SSH') {
                steps{
                     script {
-                         sshCommand remote: remote, command: "docker run --name newcontainer -d -p 8080:80 sparklins/test:1"
+                         sshCommand remote: remote, command: "docker run --name newcontainer -d -p 8080:80 sparklins/test"
                     }
                }
           }
