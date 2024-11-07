@@ -9,9 +9,11 @@ def remote = [:]
 pipeline {
   agent any
 
+//add the image name you built or the image repsoitory name from dockerhub
   environment {
        imagename = "sparklins/june-class"
-       registryCredential = 'DockerHub'
+       //add name of global credentials created on jenkins
+       registryCredential = 'Dockerhub'
        dockerImage = ''
        imagetag    = "${env.BUILD_ID}"
            }
